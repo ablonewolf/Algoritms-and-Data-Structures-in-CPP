@@ -6,7 +6,14 @@ void printAscending(int number)
   if (number > 0)
   {
     printAscending(number - 1);
-    cout << number << " ";
+    if (number - 1 == 0)
+    {
+      cout << number;
+    }
+    else
+    {
+      cout << " " << number;
+    }
   }
 }
 
@@ -14,7 +21,14 @@ void printDescending(int number)
 {
   if (number > 0)
   {
-    cout << number << " ";
+    if (number - 1 == 0)
+    {
+      cout << number;
+    }
+    else
+    {
+      cout << number << " ";
+    }
     printDescending(number - 1);
   }
 }
