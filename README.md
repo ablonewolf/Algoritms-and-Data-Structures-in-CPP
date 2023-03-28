@@ -1,4 +1,4 @@
-# Algoritms and Data Structures in C and C++
+# Algoritms and Data Structures in C++
 
 
 This repository has been created to demonstrate the basic implementation of common and frequently used data structures using C and C++. In addition, it will have the implementation of the algorithms which are designed using those data structures. 
