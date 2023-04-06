@@ -69,4 +69,5 @@ int main()
   {
     cout << number << " does not exist in the array." << endl;
   }
+  delete arr;
 }
