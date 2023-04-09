@@ -1,7 +1,8 @@
 #include <iostream>
 using namespace std;
 
-int *findUnionArray(int *array1, int *array2)
+// passed a reference to the output array, returned the size of the union array
+int findUnionArray(int *array1, int *array2, int *&unionArray)
 {
   int i = 0, j = 0, count = 0;
   while (array1[i] && array2[j])
@@ -23,31 +24,33 @@ int *findUnionArray(int *array1, int *array2)
       j++;
     }
   }
-  int *unionArray = new int[count - 1];
+  unionArray = new int[count];
   i = 0, j = 0;
-  for (int k = 0; k < count; k++)
+  int k = 0;
+  while (k < count)
   {
     if (array1[i] == array2[j])
     {
-      unionArray[k] = array1[i++];
+      unionArray[k++] = array1[i++];
       j++;
     }
     else if (array1[i] < array2[j])
     {
-      unionArray[k] = array1[i++];
+      unionArray[k++] = array1[i++];
     }
     else
     {
-      unionArray[k] = array2[j++];
+      unionArray[k++] = array2[j++];
     }
   }
-  unionArray[count] = 0; // this line is to ensure that os does not store value beyond the size of the array.
-  i = 0;
-  j = 0;
-  return unionArray;
+  if (k == count)
+  {
+    return count;
+  }
 }
 
-int *findIntersectionArray(int *array1, int *array2)
+// passed a reference to the output array, returned the size of the intersection array
+int findIntersectionArray(int *array1, int *array2, int *&intersectionArray)
 {
   int i = 0, j = 0, count = 0;
   while (array1[i] && array2[j])
@@ -68,7 +71,7 @@ int *findIntersectionArray(int *array1, int *array2)
     }
   }
   i = 0, j = 0;
-  int *intersectionArray = new int[count];
+  intersectionArray = new int[count];
   int k = 0;
   while (k < count)
   {
@@ -86,10 +89,13 @@ int *findIntersectionArray(int *array1, int *array2)
       j++;
     }
   }
-  return intersectionArray;
+  if (k == count)
+  {
+    return count;
+  }
 }
 
-int *findDiffsArray(int *array1, int *array2)
+int findDiffsArray(int *array1, int *array2, int *&diffsArray)
 {
   int i = 0, j = 0, count = 0;
   while (array1[i])
@@ -111,7 +117,7 @@ int *findDiffsArray(int *array1, int *array2)
   }
   i = 0;
   j = 0;
-  int *diffArray = new int[count];
+  diffsArray = new int[count];
   int k = 0;
   while (k < count)
   {
@@ -122,14 +128,17 @@ int *findDiffsArray(int *array1, int *array2)
     }
     else if (array1[i] < array2[j])
     {
-      diffArray[k++] = array1[i++];
+      diffsArray[k++] = array1[i++];
     }
     else
     {
       j++;
     }
   }
-  return diffArray;
+  if (k == count)
+  {
+    return count;
+  }
 }
 
 bool isArraySorted(int *array, int length)
@@ -196,10 +205,11 @@ int main()
       }
       else if (option == 1)
       {
-        int *unionArray = findUnionArray(array1, array2);
+        int *unionArray;
+        int sizeOfUnionArray = findUnionArray(array1, array2, unionArray);
         int i = 0;
         cout << "After the union of the two arrays, the result is below." << endl;
-        while (unionArray[i])
+        while (i < sizeOfUnionArray)
         {
           if (i == 0)
           {
@@ -217,10 +227,11 @@ int main()
       }
       else if (option == 2)
       {
-        int *intersectionArray = findIntersectionArray(array1, array2);
+        int *intersectionArray;
+        int sizeOfIntersectionArray = findIntersectionArray(array1, array2, intersectionArray);
         int i = 0;
         cout << "After the intersection of the two arrays, the result is below." << endl;
-        while (intersectionArray[i])
+        while (i < sizeOfIntersectionArray)
         {
           if (i == 0)
           {
@@ -243,10 +254,11 @@ int main()
         cin >> option;
         if (option == 1)
         {
-          int *diffArray = findDiffsArray(array1, array2);
+          int *diffArray;
+          int sizeOfDiffsArray = findDiffsArray(array1, array2, diffArray);
           int i = 0;
           cout << "The diffrence between the first array and the second array is below." << endl;
-          while (diffArray[i])
+          while (i < sizeOfDiffsArray)
           {
             if (i == 0)
             {
@@ -264,10 +276,11 @@ int main()
         }
         else if (option == 2)
         {
-          int *diffArray = findDiffsArray(array2, array1);
+          int *diffArray;
+          int sizeOfDiffArray = findDiffsArray(array2, array1, diffArray);
           int i = 0;
           cout << "The diffrence between the second array and the first array is below." << endl;
-          while (diffArray[i])
+          while (i < sizeOfDiffArray)
           {
             if (i == 0)
             {
