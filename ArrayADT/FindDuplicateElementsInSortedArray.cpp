@@ -71,4 +71,5 @@ int main()
   {
     cout << "The array is not sorted in asceding order or some elements of it are not greater than zero. So terminating operation." << endl;
   }
+  delete array;
 }
