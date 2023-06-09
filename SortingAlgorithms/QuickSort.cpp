@@ -1,51 +1,58 @@
 #include <iostream>
 using namespace std;
 
-void swap(int *x, int *y)
+void swap(int &x, int &y)
 {
-  int temp = *x;
-  *x = *y;
-  *y = temp;
+  int temp = x;
+  x = y;
+  y = temp;
 }
-int partition(int *arr, int low, int high)
+int partition(int *array, int low, int high)
 {
-  int pivot = arr[low];
+  int pivot = array[low];
   int i = low, j = high;
   while (i < j)
   {
-    while (arr[i] <= pivot)
+    while (array[i] <= pivot)
     {
       i++;
     }
-    while (arr[j] > pivot)
+    while (array[j] > pivot)
     {
       j--;
     }
     if (i < j)
     {
-      swap(&arr[i], &arr[j]);
+      swap(array[i], array[j]);
     }
   }
-  swap(&arr[low], &arr[j]);
+  swap(array[low], array[j]);
   return j;
 }
-void QuickSort(int *arr, int low, int high)
+void QuickSort(int *array, int low, int high)
 {
   if (low < high)
   {
-    int partitionIndex = partition(arr, low, high);
-    QuickSort(arr, low, partitionIndex);
-    QuickSort(arr, partitionIndex + 1, high);
+    int partitionIndex = partition(array, low, high);
+    QuickSort(array, low, partitionIndex);
+    QuickSort(array, partitionIndex + 1, high);
   }
 }
 
-void printArray(int *arr, int n)
+void printArray(int *array, int n)
 {
-  cout << "The elements in the array are as below." << endl;
   for (int i = 0; i < n; i++)
   {
-    cout << "Array[" << i << "]: " << arr[i] << endl;
+    if (i == 0)
+    {
+      cout << array[i];
+    }
+    else
+    {
+      cout << " " << array[i];
+    }
   }
+  cout << endl;
 }
 
 int main()
@@ -55,12 +62,13 @@ int main()
   cout << "Size: ";
   cin >> n;
   cout << "Enter the elements of the array." << endl;
-  int *arr = new int[n];
+  int *array = new int[n];
   for (int i = 0; i < n; i++)
   {
-    cout << "Array[" << i << "]: ";
-    cin >> arr[i];
+    cout << "array[" << i << "]: ";
+    cin >> array[i];
   }
-  QuickSort(arr, 0, n - 1);
-  printArray(arr, n);
+  QuickSort(array, 0, n - 1);
+  cout << "After sorting, the elements are as below." << endl;
+  printArray(array, n);
 }
