@@ -15,18 +15,18 @@ int partition(int *array, int low, int high)
   {
     while (array[i] <= pivot)
     {
-      i++;
+      i++; // finding the element which is greater than pivot
     }
     while (array[j] > pivot)
     {
-      j--;
+      j--; // finding the element which is less than pivot
     }
     if (i < j)
     {
-      swap(array[i], array[j]);
+      swap(array[i], array[j]); // putthing the elements in their respected position if array[i] is greater than pivot and array[j] is less than pivot
     }
   }
-  swap(array[low], array[j]);
+  swap(array[low], array[j]); // swapping with the pivot when i becomes equal or greater than j.
   return j;
 }
 void QuickSort(int *array, int low, int high)
