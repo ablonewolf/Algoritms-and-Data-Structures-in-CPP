@@ -54,4 +54,5 @@ int main()
   BubbleSort(array, size);
   cout << "After sorting, the elements are as below." << endl;
   printArray(array, size);
+  delete array;
 }
