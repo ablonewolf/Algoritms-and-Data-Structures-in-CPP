@@ -71,4 +71,5 @@ int main()
   QuickSort(array, 0, n - 1);
   cout << "After sorting, the elements are as below." << endl;
   printArray(array, n);
+  delete array;
 }
