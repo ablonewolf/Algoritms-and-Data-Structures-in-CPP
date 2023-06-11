@@ -7,13 +7,13 @@ void swap(int &number1, int &number2)
   number1 = number2;
   number2 = temp;
 }
-struct Node
+class Node
 {
+public:
   int data;
   Node *parent;
   Node *leftChild;
   Node *rightChild;
-  Node *next;
 
   Node(int data)
   {
@@ -21,6 +21,17 @@ struct Node
     this->parent = nullptr;
     this->leftChild = nullptr;
     this->rightChild = nullptr;
+  }
+};
+
+class QueueNode
+{
+public:
+  Node *node;
+  QueueNode *next;
+  QueueNode(Node *node)
+  {
+    this->node = node;
     this->next = nullptr;
   }
 };
@@ -28,41 +39,51 @@ struct Node
 class Queue
 {
 public:
-  Node *head;
+  QueueNode *head;
+  QueueNode *tail;
   Queue()
   {
     this->head = nullptr;
+    this->tail = nullptr;
   }
 
   void push(Node *node)
   {
+    QueueNode *queueNode = new QueueNode(node);
     if (this->head == nullptr)
     {
-      this->head = node;
+      this->head = queueNode;
+      this->tail = queueNode;
     }
     else
     {
-      Node *currentNode = this->head;
-      while (currentNode != nullptr)
-      {
-        currentNode = currentNode->next;
-      }
-      currentNode = node;
+      this->tail->next = queueNode;
+      this->tail = this->tail->next;
     }
   }
 
   Node *top()
   {
-    return this->head;
+    return this->head->node;
   }
 
   Node *pop()
   {
     if (this->head != nullptr)
     {
-      Node *node = this->head;
-      this->head = this->head->next;
-      return node;
+      if (this->head == this->tail)
+      {
+        Node *node = this->head->node;
+        this->head = nullptr;
+        this->tail = nullptr;
+        return node;
+      }
+      else
+      {
+        Node *node = this->head->node;
+        this->head = this->head->next;
+        return node;
+      }
     }
     else
       return nullptr;
@@ -82,7 +103,7 @@ public:
 class MinHeap
 {
 private:
-  int count = 0;
+  int count;
 
 public:
   Node *root;
@@ -90,58 +111,51 @@ public:
   MinHeap()
   {
     this->root = nullptr;
+    this->count = 0;
   }
 
   void insert(int data)
   {
     Node *node = new Node(data);
-    Node *newNode;
+
     if (this->root == nullptr)
     {
       this->root = node;
+      this->count++;
+      return;
     }
-    else
+
+    Queue *queue = new Queue();
+    queue->push(this->root);
+
+    while (!queue->isEmpty())
     {
-      Queue *queue = new Queue();
-      queue->push(this->root);
+      Node *currentNode = queue->pop();
 
-      while (!queue->isEmpty())
+      if (currentNode->leftChild == nullptr)
       {
-        Node *currentNode = queue->top();
-        if (currentNode != nullptr)
-        {
-          if (currentNode->leftChild != nullptr && currentNode->rightChild != nullptr)
-          {
-            queue->push(currentNode->leftChild);
-            queue->push(currentNode->rightChild);
-            queue->pop();
-          }
-          else
-          {
-            if (currentNode->leftChild == nullptr)
-            {
-              currentNode->leftChild = node;
-              currentNode->leftChild->parent = currentNode;
-              newNode = currentNode->leftChild;
-              queue->pop();
-              count++;
-              break;
-            }
-            else
-            {
-              currentNode->rightChild = node;
-              currentNode->rightChild->parent = currentNode;
-              newNode = currentNode->rightChild;
-              queue->pop();
-              count++;
-              break;
-            }
-          }
-
-          heapify(newNode);
-        }
+        currentNode->leftChild = node;
+        node->parent = currentNode;
+        this->count++;
+        break;
+      }
+      else if (currentNode->rightChild == nullptr)
+      {
+        currentNode->rightChild = node;
+        node->parent = currentNode;
+        this->count++;
+        break;
+      }
+      else
+      {
+        queue->push(currentNode->leftChild);
+        queue->push(currentNode->rightChild);
       }
     }
+
+    heapify(node);
+    delete node;
+    delete queue;
   }
 
   void heapify(Node *currentNode)
@@ -163,45 +177,72 @@ public:
     }
   }
 
+  void printData(Node *node)
+  {
+    if (this->count > 1)
+    {
+      cout << node->data << " ";
+      this->count--;
+    }
+    else
+    {
+      cout << node->data;
+      cout << endl;
+    }
+  }
+
   void printNodes()
   {
+    Node *node;
     Queue *queue = new Queue();
     if (this->root != nullptr)
     {
       queue->push(this->root);
       while (!queue->isEmpty())
       {
-        Node *node = queue->top();
+        node = queue->top();
         if (node != nullptr)
         {
           if (node->leftChild != nullptr || node->rightChild != nullptr)
           {
-            if (count >= 1)
+            printData(node);
+
+            if (node->rightChild == nullptr && node->leftChild != nullptr)
             {
-              cout << node->data << " ";
-              count--;
+              queue->push(node->leftChild);
+              queue->pop();
+            }
+            else if (node->leftChild == nullptr && node->rightChild != nullptr)
+            {
+              queue->push(node->rightChild);
+              queue->pop();
             }
             else
             {
-              cout << node->data;
+              if (node->leftChild->data <= node->rightChild->data)
+              {
+                queue->push(node->leftChild);
+                queue->push(node->rightChild);
+                queue->pop();
+              }
+              else
+              {
+                queue->push(node->rightChild);
+                queue->push(node->leftChild);
+                queue->pop();
+              }
             }
-
-            if (node->leftChild->data <= node->rightChild->data)
-            {
-              queue->push(node->leftChild);
-              queue->push(node->rightChild);
-            }
-            else
-            {
-              queue->push(node->rightChild);
-              queue->push(node->leftChild);
-            }
-
+          }
+          else
+          {
+            printData(node);
             queue->pop();
           }
         }
       }
+      delete node;
     }
+    delete queue;
   }
 };
 
@@ -213,16 +254,18 @@ int main()
   cin >> count;
   cout << "Enter the elements" << endl;
   MinHeap *minheap = new MinHeap();
+  Node *node;
   while (count >= 1)
   {
     cout << "Value: ";
     int data;
     cin >> data;
     minheap->insert(data);
-    // cout << minheap->root->data;
-    // minheap->printNodes();
+    node = new Node(data);
     count--;
   }
   cout << "After sorting, the elements are as below." << endl;
   minheap->printNodes();
+  delete node;
+  delete minheap;
 }
