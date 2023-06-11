@@ -154,8 +154,6 @@ public:
     }
 
     heapify(node);
-    delete node;
-    delete queue;
   }
 
   void heapify(Node *currentNode)
@@ -193,14 +191,13 @@ public:
 
   void printNodes()
   {
-    Node *node;
     Queue *queue = new Queue();
     if (this->root != nullptr)
     {
       queue->push(this->root);
       while (!queue->isEmpty())
       {
-        node = queue->top();
+        Node *node = queue->top();
         if (node != nullptr)
         {
           if (node->leftChild != nullptr || node->rightChild != nullptr)
@@ -240,9 +237,7 @@ public:
           }
         }
       }
-      delete node;
     }
-    delete queue;
   }
 };
 
