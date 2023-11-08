@@ -10,3 +10,4 @@
 
 # idea files
 .idea
+/cmake-build-debug/CMakeFiles/clion-Debug-log.txt
