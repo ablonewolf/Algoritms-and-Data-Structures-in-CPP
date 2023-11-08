@@ -7,3 +7,6 @@
 !.gitignore
 # or any txt files
 !*.txt
+
+# idea files
+.idea
