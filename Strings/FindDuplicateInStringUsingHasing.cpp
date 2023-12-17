@@ -15,7 +15,7 @@ string makeLowerCase(string word)
   return word;
 }
 
-void hasDuplicates(string word)
+void findDuplicates(string word)
 {
   string modifiedWord = makeLowerCase(word);
   int index = 0;
@@ -68,5 +68,5 @@ int main()
   cout << "The Word: ";
   string word;
   cin >> word;
-  hasDuplicates(word);
+  findDuplicates(word);
 }
