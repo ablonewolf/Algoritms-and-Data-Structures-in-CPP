@@ -2,6 +2,8 @@
 *
 # But not .cpp files
 !*.cpp
+# and .h files
+!*.h
 # Or directories
 !*/
 !.gitignore
