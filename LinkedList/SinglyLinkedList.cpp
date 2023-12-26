@@ -122,8 +122,7 @@ public:
         Node *temp = this->head;
         while (1)
         {
-          cout << temp->value << endl;
-          if (temp == nullptr)
+          if (temp->next == nullptr)
           {
             break;
           }
@@ -132,8 +131,8 @@ public:
             if (temp->next->value == value)
             {
               Node *newNext = temp->next->next;
-              temp->next = newNext;
               found = true;
+              temp->next = newNext;
               break;
             }
             else
@@ -145,6 +144,10 @@ public:
         if (found)
         {
           cout << "Node with value : " << value << " has been removed." << endl;
+        }
+        else
+        {
+          cout << "Node with value: " << value << "was not found" << endl;
         }
       }
     }
