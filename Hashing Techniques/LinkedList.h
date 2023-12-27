@@ -117,6 +117,10 @@ public:
       {
         found = true;
       }
+      else if (this->head->value > value)
+      {
+        found = false;
+      }
       else
       {
         Node *temp = this->head->next;
@@ -131,6 +135,10 @@ public:
             if (temp->value == value)
             {
               found = true;
+              break;
+            }
+            else if (temp->value > value)
+            {
               break;
             }
             else
