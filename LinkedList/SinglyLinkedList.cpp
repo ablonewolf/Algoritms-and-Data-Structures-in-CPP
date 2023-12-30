@@ -197,6 +197,26 @@ public:
       }
     }
   }
+  void printValuesRecursively(Node *node)
+  {
+    if (node == nullptr)
+    {
+      cout << endl;
+      return;
+    }
+    else
+    {
+      if (node == this->head)
+      {
+        cout << node->value;
+      }
+      else
+      {
+        cout << "->" << node->value;
+      }
+      printValuesRecursively(node->next);
+    }
+  }
 };
 
 int main()
@@ -220,7 +240,7 @@ int main()
   }
   cout << "Size of the linkgedlist is : " << linkedList->getSize() << endl;
   cout << "Its values are : ";
-  linkedList->printValues();
+  linkedList->printValuesRecursively(linkedList->head);
   int option;
   cout << "Enter 1 to add more elements, 2 to remove elements, 3 to print the current list, and 4 to exit the application" << endl;
   while (1)
@@ -247,7 +267,7 @@ int main()
     else if (option == 3)
     {
       cout << "The values present in the linked list are as follows:" << endl;
-      linkedList->printValues();
+      linkedList->printValuesRecursively(linkedList->head);
     }
     else if (option == 4)
     {
