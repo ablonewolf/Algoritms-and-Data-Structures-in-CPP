@@ -1,4 +1,5 @@
 #include <iostream>
+#define default_value -9999999
 using namespace std;
 
 class SinglyLinkedList
@@ -12,6 +13,11 @@ public:
     Node(int value)
     {
       this->value = value;
+      this->next = nullptr;
+    }
+    Node()
+    {
+      this->value = default_value;
       this->next = nullptr;
     }
   };
@@ -152,6 +158,61 @@ public:
       }
     }
   }
+  void printValuesRecursively(Node *node)
+  {
+    if (node == nullptr)
+    {
+      cout << endl;
+      return;
+    }
+    else
+    {
+      if (node == this->head)
+      {
+        cout << node->value;
+      }
+      else
+      {
+        cout << "->" << node->value;
+      }
+      printValuesRecursively(node->next);
+    }
+  }
+
+  void reverseList()
+  {
+    if (this->head == nullptr)
+    {
+      cout << "List is already empty. So cannot reverse it." << endl;
+    }
+    else if (this->head->next == nullptr)
+    {
+      cout << "List has only one element. So no point in reversing the list." << endl;
+    }
+    else
+    {
+      Node *current = this->head;
+      Node *previous = new Node();
+      Node *previousToPrevious = new Node();
+      while (current != nullptr)
+      {
+        previousToPrevious = previous;
+        previous = current;
+        current = current->next;
+        if (previousToPrevious->value == default_value)
+        {
+          previous->next = nullptr;
+        }
+        else
+        {
+          previous->next = previousToPrevious;
+        }
+      }
+      this->head = previous;
+      cout << "After reversing, the list is as follows: " << endl;
+      printValuesRecursively(this->head);
+    }
+  }
 
   int getSize()
   {
@@ -197,32 +258,12 @@ public:
       }
     }
   }
-  void printValuesRecursively(Node *node)
-  {
-    if (node == nullptr)
-    {
-      cout << endl;
-      return;
-    }
-    else
-    {
-      if (node == this->head)
-      {
-        cout << node->value;
-      }
-      else
-      {
-        cout << "->" << node->value;
-      }
-      printValuesRecursively(node->next);
-    }
-  }
 };
 
 int main()
 {
   SinglyLinkedList *linkedList = new SinglyLinkedList();
-  cout << "Enter the size of the linked list : " << endl;
+  cout << "Enter the size of the linked list." << endl;
   int size;
   cout << "Size : ";
   cin >> size;
@@ -242,7 +283,7 @@ int main()
   cout << "Its values are : ";
   linkedList->printValuesRecursively(linkedList->head);
   int option;
-  cout << "Enter 1 to add more elements, 2 to remove elements, 3 to print the current list, and 4 to exit the application" << endl;
+  cout << "Enter 1 to add more elements, 2 to remove elements, 3 to print the current list, 4 to reverse the list and 5 to exit the application" << endl;
   while (1)
   {
     cout << "Enter option: ";
@@ -270,6 +311,10 @@ int main()
       linkedList->printValuesRecursively(linkedList->head);
     }
     else if (option == 4)
+    {
+      linkedList->reverseList();
+    }
+    else if (option == 5)
     {
       cout << "Exiting the application. Thank you for using" << endl;
       break;
