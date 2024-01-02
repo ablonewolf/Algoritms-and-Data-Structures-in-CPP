@@ -53,51 +53,112 @@ public:
     }
   }
 
+  bool isSortedAsynchronously()
+  {
+    if (this->head == nullptr || this->head->next == nullptr || this->head->value < this->head->next->value)
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
+  }
+
   bool insertNodeInOrder(int value)
   {
     bool isAdditionSuccessful = false;
+    bool sortedAsynchronously = this->isSortedAsynchronously();
     Node *node = new Node(value);
     if (this->head != nullptr)
     {
-      if (this->head->value > node->value)
+      if (sortedAsynchronously)
       {
-        Node *temp = this->head;
-        node->next = temp;
-        this->head = node;
-        isAdditionSuccessful = true;
-      }
-      else
-      {
-        Node *temp = this->head;
-        while (1)
+        if (this->head->value > node->value)
         {
-          if (temp->next == nullptr)
+          Node *temp = this->head;
+          node->next = temp;
+          this->head = node;
+          isAdditionSuccessful = true;
+        }
+        else
+        {
+          Node *temp = this->head;
+          while (1)
           {
-            temp->next = node;
-            isAdditionSuccessful = true;
-            break;
-          }
-          else if (temp->next->value < node->value)
-          {
-            if (temp->next->next == nullptr)
+            if (temp->next == nullptr)
             {
-              temp->next->next = node;
+              temp->next = node;
               isAdditionSuccessful = true;
               break;
             }
-            temp = temp->next;
+            else if (temp->next->value < node->value)
+            {
+              if (temp->next->next == nullptr)
+              {
+                temp->next->next = node;
+                isAdditionSuccessful = true;
+                break;
+              }
+              temp = temp->next;
+            }
+            else if (temp->next->value == value)
+            {
+              cout << "This value already exists in the list. So not adding it" << endl;
+              break;
+            }
+            else
+            {
+              node->next = temp->next;
+              temp->next = node;
+              isAdditionSuccessful = true;
+              break;
+            }
           }
-          else if (temp->next->value == value)
+        }
+      }
+      else
+      {
+        if (this->head->value < node->value)
+        {
+          Node *temp = this->head;
+          node->next = temp;
+          this->head = node;
+          isAdditionSuccessful = true;
+        }
+        else
+        {
+          Node *temp = this->head;
+          while (1)
           {
-            cout << "This value already exists in the list. So not adding it" << endl;
-            break;
-          }
-          else
-          {
-            node->next = temp->next;
-            temp->next = node;
-            isAdditionSuccessful = true;
-            break;
+            if (temp->next == nullptr)
+            {
+              temp->next = node;
+              isAdditionSuccessful = true;
+              break;
+            }
+            else if (temp->next->value > node->value)
+            {
+              if (temp->next->next == nullptr)
+              {
+                temp->next->next = node;
+                isAdditionSuccessful = true;
+                break;
+              }
+              temp = temp->next;
+            }
+            else if (temp->next->value == value)
+            {
+              cout << "This value already exists in the list. So not adding it" << endl;
+              break;
+            }
+            else
+            {
+              node->next = temp->next;
+              temp->next = node;
+              isAdditionSuccessful = true;
+              break;
+            }
           }
         }
       }
@@ -209,8 +270,20 @@ public:
         }
       }
       this->head = previous;
-      cout << "After reversing, the list is as follows: " << endl;
-      printValuesRecursively(this->head);
+    }
+  }
+
+  void recursiveReverse(Node *currentNode, Node *prevNode)
+  {
+    if (currentNode != nullptr)
+    {
+      recursiveReverse(currentNode->next, currentNode);
+      currentNode->next = prevNode;
+    }
+    else
+    {
+      this->head = prevNode;
+      return;
     }
   }
 
@@ -312,7 +385,9 @@ int main()
     }
     else if (option == 4)
     {
-      linkedList->reverseList();
+      linkedList->recursiveReverse(linkedList->head, nullptr);
+      cout << "After reversing, the list is as follows: " << endl;
+      linkedList->printValuesRecursively(linkedList->head);
     }
     else if (option == 5)
     {
