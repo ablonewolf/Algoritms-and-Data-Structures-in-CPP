@@ -38,7 +38,7 @@ public:
     }
   }
 
-  bool isSortedAsynchronously()
+  bool isSortedAscending()
   {
     if (this->head == nullptr || this->head->next == nullptr || this->head->value < this->head->next->value)
     {
@@ -53,7 +53,7 @@ public:
   bool insertNodeInOrder(int value)
   {
     bool isAdditionSuccessful = false;
-    bool sortedAsynchronously = this->isSortedAsynchronously();
+    bool sortedAsynchronously = this->isSortedAscending();
     Node *node = new Node(value);
     if (this->head != nullptr)
     {
