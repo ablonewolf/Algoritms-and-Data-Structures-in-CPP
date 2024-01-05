@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 #include "SinglyLinkedList.h"
+#include "Node.h"
 using namespace std;
 
 void mergeTwoLinkedLists(SinglyLinkedList *linkedList1, SinglyLinkedList *linkedList2)
