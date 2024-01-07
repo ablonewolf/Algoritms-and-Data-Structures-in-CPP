@@ -176,8 +176,8 @@ public:
     else
     {
       // here, we are checking the value of the next node, starting our traversal from head node.
-      // since the list is sorted, if the value of the next node is less than the searched node, we traverse next.
-      // if it is greater, we stop our traversal.
+      // if the value of the next node is less than the searched node, we traverse next.
+      // if the next node is head, we stop our traversal
       // or else, we point the current node to the next of its current next node.
       Node *temp = this->head;
       while (1)
