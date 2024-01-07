@@ -16,7 +16,7 @@ int main()
     int value;
     cout << "Enter value: ";
     cin >> value;
-    if (linkedList->insertNodeInOrder(value))
+    if (linkedList->insertNode(value))
     {
       iteration++;
     }
@@ -35,7 +35,7 @@ int main()
       int value;
       cout << "Enter the value to add: ";
       cin >> value;
-      if (linkedList->insertNodeInOrder(value))
+      if (linkedList->insertNode(value))
       {
         cout << "Value added successfully." << endl;
       }
