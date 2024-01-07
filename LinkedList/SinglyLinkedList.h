@@ -311,29 +311,4 @@ public:
       return count;
     }
   }
-  void printValues()
-  {
-    Node *temp = this->head;
-    if (temp == nullptr)
-    {
-      cout << "Empty linked list" << endl;
-    }
-    else
-    {
-      while (temp != nullptr)
-      {
-        cout << temp->value;
-        if (temp->next != nullptr)
-        {
-          cout << " -> ";
-          temp = temp->next;
-        }
-        else
-        {
-          cout << endl;
-          break;
-        }
-      }
-    }
-  }
 };
