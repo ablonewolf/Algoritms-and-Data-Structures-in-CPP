@@ -82,7 +82,7 @@ public:
             // then we will swap the values between two nodes
             else
             {
-              node->next = temp->next->next;
+              node->next = temp->next;
               temp->next = node;
               int tempValue = node->value;
               node->value = temp->value;
