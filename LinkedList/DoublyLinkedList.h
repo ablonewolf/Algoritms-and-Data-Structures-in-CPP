@@ -400,9 +400,9 @@ public:
     {
       // store the next node of the current node
       node = tempNode->next;
-      // point the next node of the current node to its previous node
+      // point the next of the current node to its previous node
       tempNode->next = tempNode->prev;
-      // make the old next node as the new previous node
+      // make the previous next node as the new previous node of the current node
       tempNode->prev = node;
       // if the next of current node becomes null, it is the new tail
       if (tempNode->next == nullptr)
