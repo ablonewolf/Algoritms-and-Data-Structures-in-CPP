@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// class definition for Node
 class Node
 {
 public:
@@ -12,6 +13,8 @@ public:
     this->next = nullptr;
   }
 };
+
+// class definition for Linked List
 class LinkedList
 {
 public:
