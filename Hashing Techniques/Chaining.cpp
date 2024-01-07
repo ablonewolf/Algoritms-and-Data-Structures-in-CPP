@@ -10,7 +10,7 @@ int findHashValue(int key)
 void insert(LinkedList linkedList[], int key)
 {
   int index = findHashValue(key);
-  linkedList[index].insertNodeInOrder(key);
+  linkedList[index].insertNode(key);
 }
 
 bool search(LinkedList linkedList[], int key)

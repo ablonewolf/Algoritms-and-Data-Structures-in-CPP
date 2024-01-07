@@ -14,7 +14,7 @@ void mergeTwoLinkedLists(SinglyLinkedList *linkedList1, SinglyLinkedList *linked
     Node *temp = linkedList2->head;
     while (temp != nullptr)
     {
-      linkedList1->insertNodeInOrder(temp->value);
+      linkedList1->insertNode(temp->value);
       temp = temp->next;
     }
     if (temp == nullptr)
@@ -40,7 +40,7 @@ int main()
     cout << "Enter value: ";
     int value;
     cin >> value;
-    linkedList1->insertNodeInOrder(value);
+    linkedList1->insertNode(value);
     iteration++;
   }
   iteration = 0;
@@ -53,7 +53,7 @@ int main()
     cout << "Enter value: ";
     int value;
     cin >> value;
-    linkedList2->insertNodeInOrder(value);
+    linkedList2->insertNode(value);
     iteration++;
   }
 
