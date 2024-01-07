@@ -248,7 +248,7 @@ public:
     }
   }
 
-    void printValuesRecursively(Node *node)
+  void printValuesRecursively(Node *node)
   {
     // if the passed node is null, return from the method
     if (node == nullptr)
