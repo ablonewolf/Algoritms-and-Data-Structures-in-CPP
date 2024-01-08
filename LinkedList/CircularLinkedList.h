@@ -15,119 +15,252 @@ public:
     this->head->value = value;
   }
   Node *head;
+
+  // method to check whether the list is sorted in ascending or descending order
+  // if the list is empty or has only one element, we will assume it's sorted in ascending order
+  // otherwise, we will compare the first value with the second value
+  // if the former is less than the latter, we will assume the list is sorted in ascending order
+  // otherwise the list is sorted in descending order
+  bool isSortedAscending()
+  {
+    if (this->head == nullptr || this->head->next == this->head || this->head->value < this->head->next->value)
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
+  }
+
+  // method to insert a new node in the list
+  // if it returns true, node insertion is successful
+  // if it returns false, node insertion is failed
   bool insertNode(int value)
   {
-    // we are inserting nodes in ascending order
-    // given that the head is null, we simply assign that value to be the value of the head.
-    // otherwise, we will determine its order and assign likewise.
-    // if there is already a value in the list equal to the value we are to insert, the latter will be discarded.
-    // if not, we will make comparisons and will move forward to find its position for insertion.
-    Node *node = new Node(value);
+    // first we will check whether the list is sorted in ascending or descending order
+    // our insertion will vary based on the sort order
+    // if the head is null, we will simply set the new node to be head
     bool isInserted = false;
+    bool sortedAsynchronously = this->isSortedAscending();
+    Node *node = new Node(value);
+    // the list is not empty since the head is not null
     if (this->head != nullptr)
     {
       Node *temp = this->head;
-      // if this is the only node in the list
-      if (temp->next == this->head)
+      // if sorted in ascending order
+      if (sortedAsynchronously)
       {
-        if (temp->value == value)
+        // if this is the only node in the list
+        if (temp->next == this->head)
         {
-          cout << "Value is already present in the list." << endl;
-        }
-        else
-        {
-          // if the current head is greater than the newly added node, head will point to the new node.
-          // else new node will be the next node of the head
-          if (temp->value > node->value)
+          if (temp->value == value)
           {
-            node->next = temp;
-            this->head = node;
-            temp->next = this->head;
+            cout << "Value is already present in the list." << endl;
           }
           else
           {
-            temp->next = node;
-            node->next = temp;
-          }
-          isInserted = true;
-        }
-      }
-      // if there are more than one nodes in the list, we will adopt this approach.
-      //
-      else
-      {
-        // traverse until we encounter the last node
-        while (temp->next != this->head)
-        {
-          // if the current encountered node has a value greater than the to be added value, we will be adding the value here.
-          if (temp->value > node->value)
-          {
-            // if the current encountered node is head, we need to make some arrangements
-            // first we will set the new node to be head
-            // we will traverse to the last node and point its next to the new head
-            // new head's next will point to the old head
-            if (temp == this->head)
+            // if the current head is greater than the newly added node, head will point to the new node.
+            // else new node will be the next node of the head
+            if (temp->value > node->value)
             {
-              Node *tempNode = temp;
-              while (tempNode->next != this->head)
-              {
-                tempNode = tempNode->next;
-              }
               node->next = temp;
               this->head = node;
-              tempNode->next = this->head;
+              temp->next = this->head;
             }
-            // if the encountered node is other than head, we will do the following
-            // we will add the newly node right after the encountered node
-            // then we will swap the values between two nodes
             else
             {
-              node->next = temp->next;
+              temp->next = node;
+              node->next = temp;
+            }
+            isInserted = true;
+          }
+        }
+        // if there are more than one nodes in the list, we will adopt this approach.
+        //
+        else
+        {
+          // traverse until we encounter the last node
+          while (temp->next != this->head)
+          {
+            // if the current encountered node has a value greater than the to be added value, we will be adding the value here.
+            if (temp->value > node->value)
+            {
+              // if the current encountered node is head, we need to make some arrangements
+              // first we will set the new node to be head
+              // we will traverse to the last node and point its next to the new head
+              // new head's next will point to the old head
+              if (temp == this->head)
+              {
+                Node *tempNode = temp;
+                while (tempNode->next != this->head)
+                {
+                  tempNode = tempNode->next;
+                }
+                node->next = temp;
+                this->head = node;
+                tempNode->next = this->head;
+              }
+              // if the encountered node is other than head, we will do the following
+              // we will add the newly node right after the encountered node
+              // then we will swap the values between two nodes
+              else
+              {
+                node->next = temp->next;
+                temp->next = node;
+                int tempValue = node->value;
+                node->value = temp->value;
+                temp->value = tempValue;
+              }
+              isInserted = true;
+              break;
+            }
+            // if we see that the value already exists, we will terminate the operation right away.
+            else if (temp->value == node->value)
+            {
+              cout << "Value is already present in the list." << endl;
+              break;
+            }
+            else
+            {
+              temp = temp->next;
+            }
+          }
+          // if we reach at the end of the list, we will do following
+
+          if (temp->next == this->head && !isInserted)
+          {
+            // if the last node's value is greater than the newly node's value,
+            // we will place the new node after the last node, point its next to head and then swap the values
+            if (temp->value > node->value)
+            {
+              node->next = this->head;
               temp->next = node;
               int tempValue = node->value;
               node->value = temp->value;
               temp->value = tempValue;
+              isInserted = true;
             }
-            isInserted = true;
-            break;
-          }
-          // if we see that the value already exists, we will terminate the operation right away.
-          else if (temp->value == node->value)
-          {
-            cout << "Value is already present in the list." << endl;
-            break;
-          }
-          else
-          {
-            temp = temp->next;
+            // if the last node's value equals to the newly node's value, we will avoid the insertion
+            else if (temp->value == node->value)
+            {
+              cout << "Value is already present in the list." << endl;
+            }
+            // else the newly node will be the last node in the list and its next will point to head
+            else
+            {
+              node->next = this->head;
+              temp->next = node;
+              isInserted = true;
+            }
           }
         }
-        // if we reach at the end of the list, we will do following
-
-        if (temp->next == this->head && !isInserted)
+      }
+      // if sorted in descending order
+      else
+      {
+        // if this is the only node in the list
+        if (temp->next == this->head)
         {
-          // if the last node's value is greater than the newly node's value,
-          // we will place the new node after the last node, point its next to head and then swap the values
-          if (temp->value > node->value)
-          {
-            node->next = this->head;
-            temp->next = node;
-            int tempValue = node->value;
-            node->value = temp->value;
-            temp->value = tempValue;
-            isInserted = true;
-          }
-          // if the last node's value equals to the newly node's value, we will avoid the insertion
-          else if (temp->value == node->value)
+          if (temp->value == value)
           {
             cout << "Value is already present in the list." << endl;
           }
-          // else the newly node will be the last node in the list and its next will point to head
           else
           {
-            node->next = this->head;
-            temp->next = node;
+            // if the current head is less than the newly added node, head will point to the new node.
+            // else new node will be the next node of the head
+            if (temp->value < node->value)
+            {
+              node->next = temp;
+              this->head = node;
+              temp->next = this->head;
+            }
+            else
+            {
+              temp->next = node;
+              node->next = temp;
+            }
             isInserted = true;
+          }
+        }
+        // if there are more than one nodes in the list, we will adopt this approach.
+        //
+        else
+        {
+          // traverse until we encounter the last node
+          while (temp->next != this->head)
+          {
+            // if the current encountered node has a value less than the to be added value, we will be adding the value here.
+            if (temp->value < node->value)
+            {
+              // if the current encountered node is head, we need to make some arrangements
+              // first we will set the new node to be head
+              // we will traverse to the last node and point its next to the new head
+              // new head's next will point to the old head
+              if (temp == this->head)
+              {
+                Node *tempNode = temp;
+                while (tempNode->next != this->head)
+                {
+                  tempNode = tempNode->next;
+                }
+                node->next = temp;
+                this->head = node;
+                tempNode->next = this->head;
+              }
+              // if the encountered node is other than head, we will do the following
+              // we will add the newly node right after the encountered node
+              // then we will swap the values between two nodes
+              else
+              {
+                node->next = temp->next;
+                temp->next = node;
+                int tempValue = node->value;
+                node->value = temp->value;
+                temp->value = tempValue;
+              }
+              isInserted = true;
+              break;
+            }
+            // if we see that the value already exists, we will terminate the operation right away.
+            else if (temp->value == node->value)
+            {
+              cout << "Value is already present in the list." << endl;
+              break;
+            }
+            else
+            {
+              temp = temp->next;
+            }
+          }
+          // if we reach at the end of the list, we will do following
+
+          if (temp->next == this->head && !isInserted)
+          {
+            // if the last node's value is less than the newly node's value,
+            // we will place the new node after the last node, point its next to head and then swap the values
+            if (temp->value < node->value)
+            {
+              node->next = this->head;
+              temp->next = node;
+              int tempValue = node->value;
+              node->value = temp->value;
+              temp->value = tempValue;
+              isInserted = true;
+            }
+            // if the last node's value equals to the newly node's value, we will avoid the insertion
+            else if (temp->value == node->value)
+            {
+              cout << "Value is already present in the list." << endl;
+            }
+            // else the newly node will be the last node in the list and its next will point to head
+            else
+            {
+              node->next = this->head;
+              temp->next = node;
+              isInserted = true;
+            }
           }
         }
       }
@@ -139,7 +272,6 @@ public:
       this->head->next = this->head;
       isInserted = true;
     }
-
     return isInserted;
   }
 
@@ -292,6 +424,30 @@ public:
         cout << "->" << node->value;
         printListRecursively(node->next);
       }
+    }
+  }
+  // method to reverse the list recursively
+  void recursiveReverse(Node *currentNode, Node *prevNode)
+  {
+    // the logic is to call the method with two nodes, one node and its previous
+    // in each call, we will make its previous as its next node
+    // that's how we are inverting the direction and the list will be reversed
+    // check if the current node's next node is head node or not
+    if (currentNode->next != this->head)
+    {
+      // if yes, recursively call the method with its next node and itself
+      recursiveReverse(currentNode->next, currentNode);
+      // make its previous node as its next node
+      currentNode->next = prevNode;
+    }
+    else
+    {
+      // if the current node's next node is head, the current node will be the new head
+      Node *newLastNode = currentNode->next;
+      this->head = currentNode;
+      newLastNode->next = this->head;
+      this->head->next = prevNode;
+      return;
     }
   }
 };

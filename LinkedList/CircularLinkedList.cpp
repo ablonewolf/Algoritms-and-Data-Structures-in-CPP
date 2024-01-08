@@ -30,7 +30,8 @@ int main()
     cout << "Enter 2 to remove value in the list." << endl;
     cout << "Enter 3 to find value in the list." << endl;
     cout << "Enter 4 to print all values in the list." << endl;
-    cout << "Enter 5 to exit the application." << endl;
+    cout << "Enter 5 to reverse the current list." << endl;
+    cout << "Enter 6 to exit the application." << endl;
     int option;
     cout << "Enter option: ";
     cin >> option;
@@ -84,6 +85,17 @@ int main()
       linkedList->printListRecursively(linkedList->head);
     }
     else if (option == 5)
+    {
+      Node *tempNode = linkedList->head;
+      while (tempNode->next != linkedList->head)
+      {
+        tempNode = tempNode->next;
+      }
+      linkedList->recursiveReverse(linkedList->head, tempNode);
+      cout << "After reversing, the list is as follows: " << endl;
+      linkedList->printListRecursively(linkedList->head);
+    }
+    else if (option == 6)
     {
       cout << "Thank you for using the application." << endl;
       break;
