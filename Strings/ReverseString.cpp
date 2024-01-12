@@ -1,24 +1,21 @@
 #include <iostream>
+
 using namespace std;
 
-void swapCharacters(char &a, char &b)
-{
+void swapCharacters(char &a, char &b) {
     char temp = a;
     a = b;
     b = temp;
 }
 
-string reverseString(string str)
-{
+string reverseString(string str) {
     int j;
-    for (int i = 0; str[i]; i++)
-    {
+    for (int i = 0; str[i]; i++) {
         j++;
     }
     j--;
     int i = 0;
-    while (i < j)
-    {
+    while (i < j) {
         swapCharacters(str[i], str[j]);
         i++;
         j--;
@@ -26,8 +23,7 @@ string reverseString(string str)
     return str;
 }
 
-int main()
-{
+int main() {
     cout << "Enter the string to reverse." << endl;
     cout << "The String: ";
     string str;
