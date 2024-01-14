@@ -6,11 +6,11 @@ using namespace std;
 class Queue {
 public:
     Node *front;
-    Node *back;
+    Node *rear;
 
     Queue() {
         this->front = nullptr;
-        this->back = nullptr;
+        this->rear = nullptr;
     }
 
     bool isEmpty() {
@@ -24,10 +24,10 @@ public:
         Node *node = new Node(value);
         if (this->isEmpty()) {
             this->front = node;
-            this->back = node;
+            this->rear = node;
         } else {
-            this->back->next = node;
-            this->back = node;
+            this->rear->next = node;
+            this->rear = node;
         }
     }
 
