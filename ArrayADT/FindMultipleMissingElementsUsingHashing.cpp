@@ -3,7 +3,7 @@
 using namespace std;
 
 // function to calculate the max element
-int calculateMaxElement(int *array, int size) {
+int calculateMaxElement(int* array, int size) {
     int maxNumber = -999; // initializing a max number to be negative
     for (int index = 0; index < size; index++) {
         if (array[index] > maxNumber) {
@@ -14,9 +14,9 @@ int calculateMaxElement(int *array, int size) {
 }
 
 // function to print all missing elements
-void printMissingElements(int *array, int size, int maxElement) {
+void printMissingElements(int* array, int size, int maxElement) {
     int countArray[maxElement + 1] = {
-            0}; // take an array of size equal to the max element in the input array and initialize it to zero.
+            0 }; // take an array of size equal to the max element in the input array and initialize it to zero.
     int countMissingElements = 0;         // initial count for missing elements
     // loop to set value in the count array
     for (int index = 0; index < size; index++) {
@@ -61,7 +61,7 @@ int main() {
     int size;
     cin >> size;
     cout << "Enter the elements of the array." << endl;
-    int *array = new int[size];
+    int* array = new int[size];
     for (int i = 0; i < size; i++) {
         cout << "Array[" << i + 1 << "]: ";
         cin >> array[i];

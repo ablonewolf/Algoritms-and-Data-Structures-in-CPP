@@ -6,7 +6,7 @@ using namespace std;
 class Node {
 public:
     char value;
-    Node *next;
+    Node* next;
 
     // default constructor with no value passed,
     // in this case, the value will be null
@@ -21,7 +21,7 @@ public:
 // class definition for stack
 class Stack {
 public:
-    Node *head;
+    Node* head;
 
     // default constructor with no value
     //  in this case, head will be null
@@ -37,11 +37,11 @@ public:
     // method for pushing value into the stack
     // whenever we push a value, it will be saved as the first element; often we call it the top
     void push(char value) {
-        Node *node = new Node(value);
+        Node* node = new Node(value);
         if (this->head == nullptr) {
             this->head = node;
         } else {
-            Node *tempNode = this->head;
+            Node* tempNode = this->head;
             node->next = tempNode;
             this->head = node;
         }
@@ -68,7 +68,7 @@ public:
             cout << "The stack is currently empty." << endl;
         } else {
             cout << "The present items in the stack are listed below." << endl;
-            Node *tempNode = this->head;
+            Node* tempNode = this->head;
             while (tempNode != nullptr) {
                 if (tempNode == this->head) {
                     cout << tempNode->value;

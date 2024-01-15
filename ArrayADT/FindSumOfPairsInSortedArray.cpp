@@ -2,12 +2,12 @@
 
 using namespace std;
 
-void printPairOfSum(int *array, int size, int expectedSum) {
+void printPairOfSum(int* array, int size, int expectedSum) {
     int i = 0, j = size - 1, count = 0;
     while (i < j) {
         if (array[i] + array[j] == expectedSum) {
             cout << "Pair found which equals to the given sum: " << expectedSum << ". One element is: " << array[i]
-                 << ", another element is: " << array[j] << "." << endl;
+                << ", another element is: " << array[j] << "." << endl;
             i++;
             j--;
             count++;
@@ -28,7 +28,7 @@ void printPairOfSum(int *array, int size, int expectedSum) {
     }
 }
 
-bool isSequentiallySorted(int *array, int size) {
+bool isSequentiallySorted(int* array, int size) {
     bool sequentiallySorted = true;
     for (int i = 0; i < size - 1; i++) {
         if (array[i] < array[i + 1] && array[i] > 0) {
@@ -46,7 +46,7 @@ int main() {
     cout << "Size: ";
     int size;
     cin >> size;
-    int *array = new int[size];
+    int* array = new int[size];
     cout << "Enter the elements of the array in ascending order." << endl;
     for (int i = 0; i < size; i++) {
         cout << "Array[" << i + 1 << "]: ";

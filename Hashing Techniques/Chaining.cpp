@@ -34,7 +34,7 @@ void printItems(LinkedList linkedList[10]) {
 }
 
 int main() {
-    LinkedList *hashTable = new LinkedList[10];
+    LinkedList* hashTable = new LinkedList[10];
     cout << "Enter 1 to add elements in the hash table." << endl;
     cout << "Enter 2 to remove elements from the hash table." << endl;
     cout << "Enter 3 to find elements in the hash table." << endl;

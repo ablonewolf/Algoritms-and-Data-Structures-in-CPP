@@ -4,7 +4,7 @@
 using namespace std;
 
 int main() {
-    CircularDoublyLinkedList *linkedList = new CircularDoublyLinkedList();
+    CircularDoublyLinkedList* linkedList = new CircularDoublyLinkedList();
     cout << "Enter the size for linked list: ";
     int size;
     cin >> size;

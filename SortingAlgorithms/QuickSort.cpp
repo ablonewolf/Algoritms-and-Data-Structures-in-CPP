@@ -2,13 +2,13 @@
 
 using namespace std;
 
-void swap(int &x, int &y) {
+void swap(int& x, int& y) {
     int temp = x;
     x = y;
     y = temp;
 }
 
-int partition(int *array, int low, int high) {
+int partition(int* array, int low, int high) {
     int pivot = array[low];
     int i = low, j = high;
     while (i < j) {
@@ -27,7 +27,7 @@ int partition(int *array, int low, int high) {
     return j;
 }
 
-void QuickSort(int *array, int low, int high) {
+void QuickSort(int* array, int low, int high) {
     if (low < high) {
         int partitionIndex = partition(array, low, high);
         QuickSort(array, low, partitionIndex);
@@ -35,7 +35,7 @@ void QuickSort(int *array, int low, int high) {
     }
 }
 
-void printArray(int *array, int n) {
+void printArray(int* array, int n) {
     for (int i = 0; i < n; i++) {
         if (i == 0) {
             cout << array[i];
@@ -52,7 +52,7 @@ int main() {
     cout << "Size: ";
     cin >> n;
     cout << "Enter the elements of the array." << endl;
-    int *array = new int[n];
+    int* array = new int[n];
     for (int i = 0; i < n; i++) {
         cout << "array[" << i << "]: ";
         cin >> array[i];

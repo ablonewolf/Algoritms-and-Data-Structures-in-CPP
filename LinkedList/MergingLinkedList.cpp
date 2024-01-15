@@ -4,11 +4,11 @@
 
 using namespace std;
 
-void mergeTwoLinkedLists(SinglyLinkedList *linkedList1, SinglyLinkedList *linkedList2) {
+void mergeTwoLinkedLists(SinglyLinkedList* linkedList1, SinglyLinkedList* linkedList2) {
     if (linkedList2->head == nullptr) {
         cout << "Second Linked List is empty. So there is no point in merging this list with another." << endl;
     } else {
-        Node *temp = linkedList2->head;
+        Node* temp = linkedList2->head;
         while (temp != nullptr) {
             linkedList1->insertNode(temp->value);
             temp = temp->next;
@@ -21,8 +21,8 @@ void mergeTwoLinkedLists(SinglyLinkedList *linkedList1, SinglyLinkedList *linked
 }
 
 int main() {
-    SinglyLinkedList *linkedList1 = new SinglyLinkedList();
-    SinglyLinkedList *linkedList2 = new SinglyLinkedList();
+    SinglyLinkedList* linkedList1 = new SinglyLinkedList();
+    SinglyLinkedList* linkedList2 = new SinglyLinkedList();
     cout << "Enter the size for first Linked list." << endl;
     int iteration = 0;
     int size;

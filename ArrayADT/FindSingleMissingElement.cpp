@@ -10,7 +10,7 @@ float expectedSum(int firstElement, int lastElement) {
     return sum;
 }
 
-float actualSum(int *array, int size) {
+float actualSum(int* array, int size) {
     float sum = 0;
     for (int i = 0; i < size; i++) {
         sum += array[i];
@@ -18,7 +18,7 @@ float actualSum(int *array, int size) {
     return sum;
 }
 
-bool isSequentiallySorted(int *array, int size) {
+bool isSequentiallySorted(int* array, int size) {
     bool sequentiallySorted = true;
     for (int i = 0; i < size - 1; i++) {
         if (array[i] < array[i + 1]) {
@@ -37,7 +37,7 @@ int main() {
     cout << "Size: ";
     cin >> size;
     cout << "Enter the elements of the array in ascending order." << endl;
-    int *array = new int[size];
+    int* array = new int[size];
     for (int i = 0; i < size; i++) {
         cout << "Array[" << i + 1 << "]: ";
         cin >> array[i];

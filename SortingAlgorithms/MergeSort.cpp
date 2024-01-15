@@ -2,11 +2,11 @@
 
 using namespace std;
 
-int findSize(int *array) {
+int findSize(int* array) {
     return sizeof(array) / sizeof(array[0]);
 }
 
-void merge(int *array, int low, int mid, int high) {
+void merge(int* array, int low, int mid, int high) {
     int size = findSize(array);
     int i = low, j = mid + 1, k = low;
     int sortedArray[size];
@@ -27,7 +27,7 @@ void merge(int *array, int low, int mid, int high) {
         array[i] = sortedArray[i];
 }
 
-void mergeSort(int *array, int low, int high) {
+void mergeSort(int* array, int low, int high) {
     int mid;
     if (low < high) {
         mid = (low + high) / 2;
@@ -37,7 +37,7 @@ void mergeSort(int *array, int low, int high) {
     }
 }
 
-void printArray(int *array, int size) {
+void printArray(int* array, int size) {
     for (int i = 0; i < size; i++) {
         if (i == 0) {
             cout << array[i];
@@ -53,7 +53,7 @@ int main() {
     int size;
     cout << "Size: ";
     cin >> size;
-    int *array = new int[size];
+    int* array = new int[size];
     cout << "Enter the elements of the array." << endl;
     for (int i = 0; i < size; i++) {
         cout << "Array[" << i << "]: ";

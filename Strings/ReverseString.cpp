@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void swapCharacters(char &a, char &b) {
+void swapCharacters(char& a, char& b) {
     char temp = a;
     a = b;
     b = temp;

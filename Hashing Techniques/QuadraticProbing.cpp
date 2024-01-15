@@ -31,7 +31,7 @@ bool findElement(int value, int hashTable[]) {
 }
 
 int main() {
-    int hashtable[10] = {0};
+    int hashtable[10] = { 0 };
     int totalElements = 0;
     cout << "Welcome." << endl;
     while (1) {
@@ -51,7 +51,7 @@ int main() {
                 ++totalElements;
             } else {
                 cout << "Cannot add more elements. Loading factor cannot exceed 0.5 when quadratic probing is applied."
-                     << endl;
+                    << endl;
             }
         } else if (option == 2) {
             int value;

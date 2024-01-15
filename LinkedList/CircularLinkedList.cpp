@@ -4,7 +4,7 @@
 using namespace std;
 
 int main() {
-    CircularLinkedList *linkedList = new CircularLinkedList();
+    CircularLinkedList* linkedList = new CircularLinkedList();
     cout << "Enter the size for circular linked list: ";
     int size;
     cin >> size;
@@ -63,7 +63,7 @@ int main() {
         } else if (option == 4) {
             linkedList->printListRecursively(linkedList->head);
         } else if (option == 5) {
-            Node *tempNode = linkedList->head;
+            Node* tempNode = linkedList->head;
             while (tempNode->next != linkedList->head) {
                 tempNode = tempNode->next;
             }

@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void printArray(int *array, int size) {
+void printArray(int* array, int size) {
     for (int i = 0; i < size; i++) {
         if (i == 0) {
             cout << array[i];
@@ -13,7 +13,7 @@ void printArray(int *array, int size) {
     cout << endl;
 }
 
-void InsertionSort(int *array, int size) {
+void InsertionSort(int* array, int size) {
     for (int index = 1; index < size - 1; index++) {
         int key = array[index];
         int j = index - 1;
@@ -30,7 +30,7 @@ int main() {
     int size;
     cout << "Size: ";
     cin >> size;
-    int *array = new int[size];
+    int* array = new int[size];
     cout << "Enter the elements of the array." << endl;
     for (int i = 0; i < size; i++) {
         cout << "Array[" << i << "]: ";

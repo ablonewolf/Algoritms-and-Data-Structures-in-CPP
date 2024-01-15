@@ -18,7 +18,7 @@ int main() {
     // we are using the get line function so that we can take an entire line as input
     cin >> equation;
     // a character array to store the newly formed postfix equation
-    char *postfixEquation = new char[equation.length()];
+    char* postfixEquation = new char[equation.length()];
     // in this stack, we will be pushing the operators
     Stack operationStack;
     int index = 0;
@@ -28,10 +28,10 @@ int main() {
         // store the current character instantly in the equation if it's an operand
         if (getPrecedence(tempChar) == 0) {
             postfixEquation[postFixIndex++] = tempChar;
-        // if it's an operand, we will do the following
-        // given that the stack is empty, we will push the stack immediately
-        // else, if the top of the stack has lower precedence comparing to the current operator, we will pop it
-        // then, we will push the encountered operand
+            // if it's an operand, we will do the following
+            // given that the stack is empty, we will push the stack immediately
+            // else, if the top of the stack has lower precedence comparing to the current operator, we will pop it
+            // then, we will push the encountered operand
         } else {
             if (operationStack.isEmpty()) {
                 operationStack.push(tempChar);

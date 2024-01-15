@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void printMinAndMaxElement(int *array, int size) {
+void printMinAndMaxElement(int* array, int size) {
     int min = array[0], max = array[0];
     for (int i = 0; i < size; i++) {
         if (array[i] < min) {
@@ -21,7 +21,7 @@ int main() {
     cout << "Size: ";
     int size;
     cin >> size;
-    int *array = new int[size];
+    int* array = new int[size];
     cout << "Enter the elements of the array." << endl;
     for (int i = 0; i < size; i++) {
         cout << "Array[" << i + 1 << "]: ";

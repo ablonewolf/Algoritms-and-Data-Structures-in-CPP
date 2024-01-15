@@ -2,10 +2,9 @@
 
 using namespace std;
 
-void printDuplicatesInArray(int *array, int size, int maxElement) {
+void printDuplicatesInArray(int* array, int size, int maxElement) {
     int j, count = 0;
-    int countArray[maxElement + 1] = {
-            0}; // initializing a counter array equal to size of the max element in the array plus one.
+    int countArray[maxElement + 1] = { 0 }; // initializing a counter array equal to size of the max element in the array plus one.
     for (int i = 0; i < size; i++) {
         countArray[array[i]]++;
     }
@@ -27,7 +26,7 @@ int main() {
     int size, maxElement = -9999;
     cout << "Size: ";
     cin >> size;
-    int *array = new int[size];
+    int* array = new int[size];
     cout << "Enter the elements of the array in ascending order." << endl;
     for (int i = 0; i < size; i++) {
         cout << "Array[" << i + 1 << "]: ";

@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int printDuplicateElement(int *array, int size) {
+int printDuplicateElement(int* array, int size) {
     int j, count = 0;
     for (int i = 0; i < size; i++) {
         if (array[i] == array[i + 1]) {
@@ -20,7 +20,7 @@ int printDuplicateElement(int *array, int size) {
     return count;
 }
 
-bool isSequentiallySorted(int *array, int size) {
+bool isSequentiallySorted(int* array, int size) {
     bool sequentiallySorted = true;
     for (int i = 0; i < size - 1; i++) {
         if (array[i] <= array[i + 1] && array[i] > 0) {
@@ -38,7 +38,7 @@ int main() {
     cout << "Size: ";
     int size;
     cin >> size;
-    int *array = new int[size];
+    int* array = new int[size];
     cout << "Enter the elements of the array in ascending order." << endl;
     for (int i = 0; i < size; i++) {
         cout << "Array[" << i + 1 << "]: ";
@@ -53,8 +53,8 @@ int main() {
         }
     } else {
         cout
-                << "The array is not sorted in asceding order or some elements of it are not greater than zero. So terminating operation."
-                << endl;
+            << "The array is not sorted in asceding order or some elements of it are not greater than zero. So terminating operation."
+            << endl;
     }
     delete array;
 }

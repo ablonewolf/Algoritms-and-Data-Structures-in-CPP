@@ -6,49 +6,49 @@ int countVowel(string str) {
     int count = 0;
     for (int i = 0; str[i]; i++) {
         switch (str[i]) {
-            case 'e': {
-                count++;
-                break;
-            }
-            case 'E': {
-                count++;
-                break;
-            }
-            case 'a': {
-                count++;
-                break;
-            }
-            case 'A': {
-                count++;
-                break;
-            }
-            case 'i': {
-                count++;
-                break;
-            }
-            case 'I': {
-                count++;
-                break;
-            }
-            case 'o': {
-                count++;
-                break;
-            }
-            case 'O': {
-                count++;
-                break;
-            }
-            case 'u': {
-                count++;
-                break;
-            }
-            case 'U': {
-                count++;
-                break;
-            }
-            default: {
-                continue;
-            }
+        case 'e': {
+            count++;
+            break;
+        }
+        case 'E': {
+            count++;
+            break;
+        }
+        case 'a': {
+            count++;
+            break;
+        }
+        case 'A': {
+            count++;
+            break;
+        }
+        case 'i': {
+            count++;
+            break;
+        }
+        case 'I': {
+            count++;
+            break;
+        }
+        case 'o': {
+            count++;
+            break;
+        }
+        case 'O': {
+            count++;
+            break;
+        }
+        case 'u': {
+            count++;
+            break;
+        }
+        case 'U': {
+            count++;
+            break;
+        }
+        default: {
+            continue;
+        }
         }
     }
     return count;

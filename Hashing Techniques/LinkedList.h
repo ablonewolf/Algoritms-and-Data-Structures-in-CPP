@@ -6,7 +6,7 @@ using namespace std;
 class Node {
 public:
     int value;
-    Node *next = nullptr;
+    Node* next = nullptr;
 
     Node(int value) {
         this->value = value;
@@ -25,7 +25,7 @@ public:
         this->head->value = initialValue;
     }
 
-    Node *head;
+    Node* head;
 
     // method to check whether the list is sorted in ascending or descending order
     // if the list is empty or has only one element, we will assume it's sorted in ascending order
@@ -49,7 +49,7 @@ public:
         // if the head is null, we will simply set the new node to be head
         bool isAdditionSuccessful = false;
         bool sortedAsynchronously = this->isSortedAscending();
-        Node *node = new Node(value);
+        Node* node = new Node(value);
         // the list is not empty since the head is not null
         if (this->head != nullptr) {
             // if sorted in ascending order
@@ -58,7 +58,7 @@ public:
                 // we will keep traversing the list until we find a node whose value is greater than that of new node
                 // if found, we will place the new node right before the found node
                 // otherwise, we will place the new node at the end of the list
-                Node *tempNode = this->head;
+                Node* tempNode = this->head;
                 // traversing throughout the list to find the appropriate position
                 while (tempNode != nullptr) {
                     // if we have reached the last node, we will do the following.
@@ -73,21 +73,21 @@ public:
                             isAdditionSuccessful = true;
                             break;
                         }
-                            // if the last node's value is smaller than the inserted value
-                            // we will add the new node after the previous last node.
+                        // if the last node's value is smaller than the inserted value
+                        // we will add the new node after the previous last node.
                         else if (tempNode->value < node->value) {
                             tempNode->next = node;
                             isAdditionSuccessful = true;
                             break;
                         }
-                            // if they are of same value, insertion will be discarded.
+                        // if they are of same value, insertion will be discarded.
                         else {
                             cout << "This value already exists in the list. So not adding it" << endl;
                             break;
                         }
                     }
-                        // if the current node is not the last node
-                        // if the node satisfies the above condition, we will insert the new node before this node
+                    // if the current node is not the last node
+                    // if the node satisfies the above condition, we will insert the new node before this node
                     else if (tempNode->value > node->value) {
                         // we will add the new node right after the encountered node
                         // then we will swap the values between two nodes
@@ -99,24 +99,24 @@ public:
                         isAdditionSuccessful = true;
                         break;
                     }
-                        // if we see that the value already exists, we will terminate the operation right away.
+                    // if we see that the value already exists, we will terminate the operation right away.
                     else if (tempNode->value == value) {
                         cout << "This value already exists in the list. So not adding it" << endl;
                         break;
                     }
-                        // other than that, point to the next node and continue traversing
+                    // other than that, point to the next node and continue traversing
                     else {
                         tempNode = tempNode->next;
                     }
                 }
             }
-                // if sorted in descending order
+            // if sorted in descending order
             else {
                 // we will first determine the new node's position
                 // we will keep traversing the list until we find a node whose value is less than that of new node
                 // if found, we will place the new node right before the found node
                 // otherwise, we will place the new node at the end of the list
-                Node *tempNode = this->head;
+                Node* tempNode = this->head;
                 // traversing throughout the list to find the appropriate position
                 while (tempNode != nullptr) {
                     // if we have reached the last node, we will do the following.
@@ -131,21 +131,21 @@ public:
                             isAdditionSuccessful = true;
                             break;
                         }
-                            // if the last node's value is larger than the inserted value
-                            // we will add the new node after the previous last node.
+                        // if the last node's value is larger than the inserted value
+                        // we will add the new node after the previous last node.
                         else if (tempNode->value > node->value) {
                             tempNode->next = node;
                             isAdditionSuccessful = true;
                             break;
                         }
-                            // if they are of same value, insertion will be discarded.
+                        // if they are of same value, insertion will be discarded.
                         else {
                             cout << "This value already exists in the list. So not adding it" << endl;
                             break;
                         }
                     }
-                        // if the current node is not the last node
-                        // if the node satisfies the above condition, we will insert the new node before this node
+                    // if the current node is not the last node
+                    // if the node satisfies the above condition, we will insert the new node before this node
                     else if (tempNode->value < node->value) {
                         // we will add the new node right after the encountered node
                         // then we will swap the values between two nodes
@@ -157,19 +157,19 @@ public:
                         isAdditionSuccessful = true;
                         break;
                     }
-                        // if we see that the value already exists, we will terminate the operation right away.
+                    // if we see that the value already exists, we will terminate the operation right away.
                     else if (tempNode->value == value) {
                         cout << "This value already exists in the list. So not adding it" << endl;
                         break;
                     }
-                        // other than that, point to the next node and continue traversing
+                    // other than that, point to the next node and continue traversing
                     else {
                         tempNode = tempNode->next;
                     }
                 }
             }
         }
-            // the list is empty. So the new node will be the head
+        // the list is empty. So the new node will be the head
         else {
             this->head = node;
             isAdditionSuccessful = true;
@@ -188,16 +188,16 @@ public:
             if (this->head->value == value) {
                 found = true;
             }
-                // if the value of head is greater than the value, set the flag to false
+            // if the value of head is greater than the value, set the flag to false
             else if (this->head->value > value) {
                 found = false;
             }
-                // keep traversing from the next node of the head.
-                // if value is found, set the flag to true and break the loop
-                // if value of current node is greater than the searched value, break the loop
-                // else, point to the next node and keep traversing till the end of the list.
+            // keep traversing from the next node of the head.
+            // if value is found, set the flag to true and break the loop
+            // if value of current node is greater than the searched value, break the loop
+            // else, point to the next node and keep traversing till the end of the list.
             else {
-                Node *temp = this->head->next;
+                Node* temp = this->head->next;
                 while (1) {
                     if (temp == nullptr) {
                         break;
@@ -228,19 +228,19 @@ public:
                 this->head = this->head->next;
                 cout << "Node with value : " << value << " has been removed." << endl;
             }
-                // if it's the node other than head
+            // if it's the node other than head
             else {
                 // here, we are checking the value of the next node, starting our traversal from head node.
                 // if the value of the next node is not equal to the searched node, we traverse next.
                 // if the next node is null, we stop our traversal
                 // or else, we point the current node to the next of its current next node.
-                Node *temp = this->head;
+                Node* temp = this->head;
                 while (1) {
                     if (temp->next == nullptr) {
                         break;
                     } else {
                         if (temp->next->value == value) {
-                            Node *newNext = temp->next->next;
+                            Node* newNext = temp->next->next;
                             found = true;
                             temp->next = newNext;
                             break;
@@ -264,7 +264,7 @@ public:
             return count;
         } else {
             count++;
-            Node *temp = this->head;
+            Node* temp = this->head;
             while (temp->next != nullptr) {
                 count++;
                 temp = temp->next;
@@ -275,7 +275,7 @@ public:
 
     // method for printing all values in the list
     void printValues() {
-        Node *temp = this->head;
+        Node* temp = this->head;
         if (temp == nullptr) {
             cout << "No item exists at this index." << endl;
         } else {

@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void leftShiftArray(int *&array, int size) {
+void leftShiftArray(int*& array, int size) {
     int index = 0;
     while (index < size) {
         array[index] = array[index + 1];
@@ -11,7 +11,7 @@ void leftShiftArray(int *&array, int size) {
     array[index] = 0;
 }
 
-void rightShiftArray(int *&array, int size) {
+void rightShiftArray(int*& array, int size) {
     while (size > 0) {
         array[size] = array[size - 1];
         size--;
@@ -19,7 +19,7 @@ void rightShiftArray(int *&array, int size) {
     array[size] = 0;
 }
 
-void leftRotateArray(int *&array, int size) {
+void leftRotateArray(int*& array, int size) {
     int index = 0, temp;
     while (index < size) {
         if (index == 0) {
@@ -32,7 +32,7 @@ void leftRotateArray(int *&array, int size) {
     array[index] = temp;
 }
 
-void rightRotateArray(int *&array, int size) {
+void rightRotateArray(int*& array, int size) {
     int temp;
     int lastEntry = array[size];
     while (size > 0) {
@@ -42,7 +42,7 @@ void rightRotateArray(int *&array, int size) {
     array[size] = lastEntry;
 }
 
-void printArray(int *array, int size) {
+void printArray(int* array, int size) {
     for (int i = 0; i < size; i++) {
         cout << "array[" << i + 1 << "]: " << array[i] << endl;
     }
@@ -53,7 +53,7 @@ int main() {
     int size;
     cout << "Size: ";
     cin >> size;
-    int *array = new int[size];
+    int* array = new int[size];
     cout << "Enter the elements of the array." << endl;
     for (int i = 0; i < size; i++) {
         cout << "array[" << i + 1 << "]: ";

@@ -4,7 +4,7 @@
 using namespace std;
 
 int main() {
-    Stack *stack = new Stack();
+    Stack* stack = new Stack();
     while (1) {
         cout << "Enter 1 to push new values to the stack" << endl;
         cout << "Enter 2 to print the top of the stack." << endl;

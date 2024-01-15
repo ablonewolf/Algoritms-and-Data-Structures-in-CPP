@@ -39,7 +39,7 @@ int main() {
     cout << "Enter an infix equation to convert it to a postfix equation: ";
     cin >> equation;
     // a character array to store the newly formed postfix equation
-    char *postfixEquation = new char[equation.length()];
+    char* postfixEquation = new char[equation.length()];
     // in this stack, we will be pushing the operators
     Stack operationStack;
     int index = 0;

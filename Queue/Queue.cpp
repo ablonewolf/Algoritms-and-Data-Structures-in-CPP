@@ -4,7 +4,7 @@
 using namespace std;
 
 int main() {
-    Queue *queue = new Queue();
+    Queue* queue = new Queue();
     cout << "Enter 1 to insert items to the queue." << endl;
     cout << "Enter 2 to remove an item from the queue." << endl;
     cout << "Enter 3 to get the front item from the queue." << endl;

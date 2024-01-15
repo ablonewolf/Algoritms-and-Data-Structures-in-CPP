@@ -2,7 +2,7 @@
 
 using namespace std;
 
-bool BinarySearch(int *arr, int end, int start, int num) {
+bool BinarySearch(int* arr, int end, int start, int num) {
     bool found = false;
     int mid;
 
@@ -34,7 +34,7 @@ int main() {
     cout << "Size: ";
     int size;
     cin >> size;
-    int *arr = new int[size];
+    int* arr = new int[size];
     cout << "Enter the values for the array." << endl;
     for (int i = 0; i < size; i++) {
         cout << "Value for index " << i + 1 << ": ";

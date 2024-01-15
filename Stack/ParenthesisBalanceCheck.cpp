@@ -9,7 +9,7 @@ int main() {
     // we are using the get line function so that we can take an entire line as input
     getline(cin, equation);
 
-    Stack *parenthesisStack = new Stack();
+    Stack* parenthesisStack = new Stack();
     for (int i = 0; i < equation.length(); i++) {
         if (equation[i] == '(' ||
             equation[i] == '{' ||
@@ -17,7 +17,7 @@ int main() {
             // we will only store the opening brackets
             parenthesisStack->push(equation[i]);
         }
-            // if we encounter a closing bracket
+        // if we encounter a closing bracket
         else if (equation[i] == ')' || equation[i] == '}' || equation[i] == ']') {
             // storing the current top of the stack here
             char top = parenthesisStack->top();
@@ -27,7 +27,7 @@ int main() {
                 (equation[i] == ']' && top == '['))
                 parenthesisStack->pop();
         }
-            // ignore the other characters
+        // ignore the other characters
         else {
             continue;
         }

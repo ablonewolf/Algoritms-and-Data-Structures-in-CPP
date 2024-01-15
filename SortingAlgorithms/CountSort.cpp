@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void printArray(int *array, int size) {
+void printArray(int* array, int size) {
     for (int i = 0; i < size; i++) {
         if (i == 0) {
             cout << array[i];
@@ -13,8 +13,8 @@ void printArray(int *array, int size) {
     cout << endl;
 }
 
-void countSort(int *array, int max, int size) {
-    int countArray[max + 1] = {0};
+void countSort(int* array, int max, int size) {
+    int countArray[max + 1] = { 0 };
     for (int i = 0; i < size; i++) {
         countArray[array[i]]++;
     }
@@ -36,7 +36,7 @@ int main() {
     int size;
     cout << "Size: ";
     cin >> size;
-    int *array = new int[size];
+    int* array = new int[size];
     cout << "Enter the elements of the array." << endl;
     for (int i = 0; i < size; i++) {
         cout << "Array[" << i << "]: ";

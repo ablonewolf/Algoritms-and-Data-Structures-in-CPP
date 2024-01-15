@@ -2,13 +2,13 @@
 
 using namespace std;
 
-void swap(int &number1, int &number2) {
+void swap(int& number1, int& number2) {
     int temp = number1;
     number1 = number2;
     number2 = temp;
 }
 
-void SelectionSort(int *array, int size) {
+void SelectionSort(int* array, int size) {
     for (int i = 0; i < size; i++) {
         int k = i;
         for (int j = i + 1; j < size; j++) {
@@ -20,7 +20,7 @@ void SelectionSort(int *array, int size) {
     }
 }
 
-void printArray(int *array, int size) {
+void printArray(int* array, int size) {
     for (int i = 0; i < size; i++) {
         if (i == 0) {
             cout << array[i];
@@ -36,7 +36,7 @@ int main() {
     int size;
     cout << "Size: ";
     cin >> size;
-    int *array = new int[size];
+    int* array = new int[size];
     cout << "Enter the elements of the array." << endl;
     for (int i = 0; i < size; i++) {
         cout << "Array[" << i << "]: ";

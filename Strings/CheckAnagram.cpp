@@ -12,7 +12,7 @@ int calculateLength(string word) {
 
 bool checkAnagram(string word1, string word2) {
     if (calculateLength(word1) == calculateLength(word2)) {
-        int countArray[26] = {0};
+        int countArray[26] = { 0 };
         int initialIndex = 0;
         bool isAnagram = true;
         while (word1[initialIndex] != '\0') {

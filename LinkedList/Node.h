@@ -6,7 +6,7 @@ using namespace std;
 class Node {
 public:
     int value;
-    Node *next = nullptr;
+    Node* next = nullptr;
 
     Node(int value) {
         this->value = value;

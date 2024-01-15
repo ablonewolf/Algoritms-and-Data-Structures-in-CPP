@@ -4,7 +4,7 @@
 using namespace std;
 
 int main() {
-    DoublyLinkedList *linkedList = new DoublyLinkedList();
+    DoublyLinkedList* linkedList = new DoublyLinkedList();
     cout << "Enter the size for linked list: ";
     int size;
     cin >> size;

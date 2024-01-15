@@ -4,7 +4,7 @@
 using namespace std;
 
 int main() {
-    SinglyLinkedList *linkedList = new SinglyLinkedList();
+    SinglyLinkedList* linkedList = new SinglyLinkedList();
     cout << "Enter the size of the linked list." << endl;
     int size;
     cout << "Size : ";
@@ -24,8 +24,8 @@ int main() {
     linkedList->printValuesRecursively(linkedList->head);
     int option;
     cout
-            << "Enter 1 to add more elements, 2 to remove elements, 3 to print the current list, 4 to reverse the list and 5 to exit the application"
-            << endl;
+        << "Enter 1 to add more elements, 2 to remove elements, 3 to print the current list, 4 to reverse the list and 5 to exit the application"
+        << endl;
     while (1) {
         cout << "Enter option: ";
         cin >> option;

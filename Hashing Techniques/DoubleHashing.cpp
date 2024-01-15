@@ -56,7 +56,7 @@ int main() {
     cout << "Enter the size for hashtable: ";
     cin >> size;
     int maxPrime = findMaxPrime(size);
-    int hashtable[size] = {0};
+    int hashtable[size] = { 0 };
     int totalElements = 0;
     cout << "Welcome." << endl;
     while (1) {
@@ -76,7 +76,7 @@ int main() {
                 ++totalElements;
             } else {
                 cout << "Cannot add more elements. Loading factor cannot exceed 0.5 when linear probing is applied."
-                     << endl;
+                    << endl;
             }
         } else if (option == 2) {
             int value;

@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void ReverseArray(int *&array, int size) {
+void ReverseArray(int*& array, int size) {
     int temp = size;
     static int index = 0;
     if (index > size / 2) {
@@ -14,7 +14,7 @@ void ReverseArray(int *&array, int size) {
     }
 }
 
-void swap(int &num1, int &num2) {
+void swap(int& num1, int& num2) {
     int temp = num1;
     num1 = num2;
     num2 = temp;
@@ -25,7 +25,7 @@ int main() {
     int size;
     cout << "Size: ";
     cin >> size;
-    int *array = new int[size];
+    int* array = new int[size];
     cout << "Enter the elements of the array." << endl;
     for (int i = 0; i < size; i++) {
         cout << "array[" << i + 1 << "]: ";

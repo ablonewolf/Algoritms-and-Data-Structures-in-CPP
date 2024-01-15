@@ -16,7 +16,7 @@ string makeLowerCase(string word) {
 void findDuplicates(string word) {
     string modifiedWord = makeLowerCase(word);
     int index = 0;
-    int countArray[26] = {0};
+    int countArray[26] = { 0 };
     while (modifiedWord[index] != '\0') {
         countArray[modifiedWord[index] - 97]++;
         index++;

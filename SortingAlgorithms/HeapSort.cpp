@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void swap(int &number1, int &number2) {
+void swap(int& number1, int& number2) {
     int temp = number1;
     number1 = number2;
     number2 = temp;
@@ -11,9 +11,9 @@ void swap(int &number1, int &number2) {
 class Node {
 public:
     int data;
-    Node *parent;
-    Node *leftChild;
-    Node *rightChild;
+    Node* parent;
+    Node* leftChild;
+    Node* rightChild;
 
     Node(int data) {
         this->data = data;
@@ -25,10 +25,10 @@ public:
 
 class QueueNode {
 public:
-    Node *node;
-    QueueNode *next;
+    Node* node;
+    QueueNode* next;
 
-    QueueNode(Node *node) {
+    QueueNode(Node* node) {
         this->node = node;
         this->next = nullptr;
     }
@@ -36,16 +36,16 @@ public:
 
 class Queue {
 public:
-    QueueNode *head;
-    QueueNode *tail;
+    QueueNode* head;
+    QueueNode* tail;
 
     Queue() {
         this->head = nullptr;
         this->tail = nullptr;
     }
 
-    void push(Node *node) {
-        QueueNode *queueNode = new QueueNode(node);
+    void push(Node* node) {
+        QueueNode* queueNode = new QueueNode(node);
         if (this->head == nullptr) {
             this->head = queueNode;
             this->tail = queueNode;
@@ -55,19 +55,19 @@ public:
         }
     }
 
-    Node *top() {
+    Node* top() {
         return this->head->node;
     }
 
-    Node *pop() {
+    Node* pop() {
         if (this->head != nullptr) {
             if (this->head == this->tail) {
-                Node *node = this->head->node;
+                Node* node = this->head->node;
                 this->head = nullptr;
                 this->tail = nullptr;
                 return node;
             } else {
-                Node *node = this->head->node;
+                Node* node = this->head->node;
                 this->head = this->head->next;
                 return node;
             }
@@ -88,7 +88,7 @@ private:
     int count;
 
 public:
-    Node *root;
+    Node* root;
 
     MinHeap() {
         this->root = nullptr;
@@ -96,7 +96,7 @@ public:
     }
 
     void insert(int data) {
-        Node *node = new Node(data);
+        Node* node = new Node(data);
 
         if (this->root == nullptr) {
             this->root = node;
@@ -104,11 +104,11 @@ public:
             return;
         }
 
-        Queue *queue = new Queue();
+        Queue* queue = new Queue();
         queue->push(this->root);
 
         while (!queue->isEmpty()) {
-            Node *currentNode = queue->pop();
+            Node* currentNode = queue->pop();
 
             if (currentNode->leftChild == nullptr) {
                 currentNode->leftChild = node;
@@ -129,7 +129,7 @@ public:
         heapify(node);
     }
 
-    void heapify(Node *currentNode) {
+    void heapify(Node* currentNode) {
         if (currentNode == nullptr) {
             return;
         } else {
@@ -142,7 +142,7 @@ public:
         }
     }
 
-    void printData(Node *node) {
+    void printData(Node* node) {
         if (this->count > 1) {
             cout << node->data << " ";
             this->count--;
@@ -153,11 +153,11 @@ public:
     }
 
     void printNodes() {
-        Queue *queue = new Queue();
+        Queue* queue = new Queue();
         if (this->root != nullptr) {
             queue->push(this->root);
             while (!queue->isEmpty()) {
-                Node *node = queue->top();
+                Node* node = queue->top();
                 if (node != nullptr) {
                     if (node->leftChild != nullptr || node->rightChild != nullptr) {
                         printData(node);
@@ -195,8 +195,8 @@ int main() {
     cout << "Count: ";
     cin >> count;
     cout << "Enter the elements" << endl;
-    MinHeap *minheap = new MinHeap();
-    Node *node;
+    MinHeap* minheap = new MinHeap();
+    Node* node;
     while (count >= 1) {
         cout << "Value: ";
         int data;

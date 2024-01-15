@@ -5,8 +5,8 @@ using namespace std;
 
 class Queue {
 public:
-    Node *front;
-    Node *rear;
+    Node* front;
+    Node* rear;
 
     Queue() {
         this->front = nullptr;
@@ -21,7 +21,7 @@ public:
     }
 
     void enqueue(int value) {
-        Node *node = new Node(value);
+        Node* node = new Node(value);
         if (this->isEmpty()) {
             this->front = node;
             this->rear = node;
@@ -51,7 +51,7 @@ public:
         if (this->isEmpty()) {
             cout << "This queue is empty" << endl;
         } else {
-            Node *temp = this->front;
+            Node* temp = this->front;
             cout << "The present items in the queue are as below:" << endl;
             while (temp) {
                 if (!temp->next) {

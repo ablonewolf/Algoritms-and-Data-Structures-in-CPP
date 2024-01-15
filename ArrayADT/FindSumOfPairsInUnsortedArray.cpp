@@ -2,9 +2,9 @@
 
 using namespace std;
 
-void printPair(int *array, int size, int expectedSum, int maxElement) {
+void printPair(int* array, int size, int expectedSum, int maxElement) {
     int count = 0;
-    int countArray[maxElement + 1] = {0};
+    int countArray[maxElement + 1] = { 0 };
     for (int i = 0; i < size; i++) {
         countArray[array[i]]++; // setting the count for each element in the array;
     }
@@ -48,7 +48,7 @@ int main() {
     int size, maxElement = -9999;
     cout << "Size: ";
     cin >> size;
-    int *array = new int[size];
+    int* array = new int[size];
     cout << "Enter the elements of the array." << endl;
     for (int i = 0; i < size; i++) {
         cout << "Array[" << i + 1 << "]: ";

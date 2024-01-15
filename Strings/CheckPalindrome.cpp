@@ -40,7 +40,7 @@ bool checkPalindrome(string word) {
 
 int main() {
     cout << "Enter the word to check whether it's palindrome or not. Please enter all characters in lower case."
-         << endl;
+        << endl;
     cout << "The Word: ";
     string word;
     cin >> word;
