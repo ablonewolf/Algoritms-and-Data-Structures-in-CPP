@@ -5,8 +5,7 @@ using namespace std;
 int findCombination(int n, int r) {
   if (n == 1 || n == r) {
     return 1;
-  }
-  if (r == 1) {
+  } else if (r == 1) {
     return n;
   }
   return findCombination(n - 1, r - 1) + findCombination(n - 1, r);
