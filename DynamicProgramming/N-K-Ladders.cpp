@@ -11,19 +11,17 @@ int calculateSteps(int n, int k) {
   for (int i = 2; i <= n; i++) {
     // if the current step is greater than K, we will consider the previous K steps and sum them up
     if (i >= k) {
-      int temp = k;
-      while (temp > 0) {
-        stepArray[i] += stepArray[i - temp];
-        temp--;
-      }
-      // if not, then we will just increment by 1 from the previous step
-    } else {
+      stepArray[i] = 2 * stepArray[i - 1] - stepArray[i - k - 1];
+    }
+    // if not, then we will just increment by 1 from the previous step
+    else {
       stepArray[i] = stepArray[i - 1] + 1;
     }
   }
-
   return stepArray[n];
 }
+
+
 
 int main() {
   cout << "Enter the total number of steps: ";
