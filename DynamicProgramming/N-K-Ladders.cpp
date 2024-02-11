@@ -17,8 +17,8 @@ int countTotalWays(int n, int k) {
     else {
       stepArray[i] = stepArray[i - 1] + 1;
     }
-  }f
-    return stepArray[n];
+  }
+  return stepArray[n];
 }
 
 
