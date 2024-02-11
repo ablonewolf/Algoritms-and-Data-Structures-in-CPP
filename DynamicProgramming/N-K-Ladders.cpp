@@ -8,16 +8,16 @@ int countTotalWays(int n, int k) {
   stepArray[0] = 1;
   stepArray[1] = 1;
 
-  for (int i = 2; i <= n; i++) {
-    // if the current step is greater than K, we will consider the previous K steps and sum them up
-    if (i >= k) {
-      stepArray[i] = 2 * stepArray[i - 1] - stepArray[i - k - 1];
-    }
-    // if not, then we will just increment by 1 from the previous step
-    else {
-      stepArray[i] = stepArray[i - 1] + 1;
-    }
+  // for step number 2 upto k, it will be the double of the ways to reach the previous
+  for (int i = 2; i <= k; i++) {
+    stepArray[i] = 2 * stepArray[i - 1];
   }
+
+  // here, we are using the recurrence relationship to count ways for steps higher than max step k
+  for (int i = k + 1; i <= n; i++) {
+    stepArray[i] = 2 * stepArray[i - 1] - stepArray[i - k - 1];
+  }
+
   return stepArray[n];
 }
 
