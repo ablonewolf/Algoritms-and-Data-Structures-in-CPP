@@ -2,7 +2,7 @@
 using namespace std;
 
 
-int calculateSteps(int n, int k) {
+int countTotalWays(int n, int k) {
   vector<int> stepArray(n + 1, 0);
   // initialize values for base case
   stepArray[0] = 1;
@@ -17,8 +17,8 @@ int calculateSteps(int n, int k) {
     else {
       stepArray[i] = stepArray[i - 1] + 1;
     }
-  }
-  return stepArray[n];
+  }f
+    return stepArray[n];
 }
 
 
@@ -30,7 +30,7 @@ int main() {
   cout << "Enter the length of at most max step: ";
   int max;
   cin >> max;
-  int answer = calculateSteps(steps, max);
+  int answer = countTotalWays(steps, max);
   cout << "The total number of ways to reach that step is " << answer << "." << endl;
 }
 
