@@ -12,7 +12,7 @@ int main() {
     int number;
     cin >> number;
 
-    cout << "Enter the bit position: ";
+    cout << "Enter the bit position(position starts from zero): ";
     int position;
     cin >> position;
 
