@@ -17,5 +17,4 @@ int main() {
     cin >> position;
 
     cout << "The Ith bit is " << getIthBit(number, position) << "." << endl;
-
 }
